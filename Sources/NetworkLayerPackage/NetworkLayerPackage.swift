@@ -8,6 +8,7 @@ public enum NetworkError: Error {
 
 @available(iOS 15.0, *)
 public class NetworkManager<T: Codable> {
+     public init() {}
     func fetchData(from urlString: String) async throws -> T {
         guard let url = URL(string: urlString) else {
             throw NetworkError.invalidURL
