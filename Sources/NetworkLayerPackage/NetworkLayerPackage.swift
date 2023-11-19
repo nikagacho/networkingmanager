@@ -1,13 +1,13 @@
 
 import Foundation
 
-enum NetworkError: Error {
+public enum NetworkError: Error {
     case invalidURL
     case requestFailed
 }
 
 @available(iOS 15.0, *)
-class NetworkManager<T: Codable> {
+public class NetworkManager<T: Codable> {
     func fetchData(from urlString: String) async throws -> T {
         guard let url = URL(string: urlString) else {
             throw NetworkError.invalidURL
