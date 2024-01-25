@@ -53,19 +53,19 @@ public class NetworkManager<T: Codable> {
                throw NetworkError.requestFailed
            }
        }
-    
-    public func fetchImage(from urlString: String) async -> UIImage? {
+    // Image
+    func fetchImageData(from urlString: String) async throws -> Data {
         guard let url = URL(string: urlString) else {
-            return nil
+            throw NetworkError.invalidURL
         }
 
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
-            return UIImage(data: data)
+            return data
         } catch {
-            print("Error fetching the image: \(error)")
-            return nil
+            throw NetworkError.requestFailed
         }
     }
+
     
 }
