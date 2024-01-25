@@ -54,4 +54,18 @@ public class NetworkManager<T: Codable> {
            }
        }
     
+    public func fetchImage(from urlString: String) async -> UIImage? {
+        guard let url = URL(string: urlString) else {
+            return nil
+        }
+
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            return UIImage(data: data)
+        } catch {
+            print("Error fetching the image: \(error)")
+            return nil
+        }
+    }
+    
 }
