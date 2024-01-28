@@ -54,7 +54,7 @@ public class NetworkManager<T: Codable> {
            }
        }
     // Image
-    func fetchImageData(from urlString: String) async throws -> Data {
+    public func fetchImageData(from urlString: String) async throws -> Data {
         guard let url = URL(string: urlString) else {
             throw NetworkError.invalidURL
         }
